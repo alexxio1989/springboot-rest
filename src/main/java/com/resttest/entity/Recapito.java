@@ -1,10 +1,16 @@
 package com.resttest.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "recapito")
+@Getter
+@Setter
 public class Recapito {
+
     @Id
     @Column(name = "idrecapito", nullable = false)
     private Integer id;
@@ -29,70 +35,6 @@ public class Recapito {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "utente_idutente", nullable = false)
-    private Utente utenteIdutente;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getPaese() {
-        return paese;
-    }
-
-    public void setPaese(String paese) {
-        this.paese = paese;
-    }
-
-    public String getCitta() {
-        return citta;
-    }
-
-    public void setCitta(String citta) {
-        this.citta = citta;
-    }
-
-    public String getIndirizzo() {
-        return indirizzo;
-    }
-
-    public void setIndirizzo(String indirizzo) {
-        this.indirizzo = indirizzo;
-    }
-
-    public String getZip() {
-        return zip;
-    }
-
-    public void setZip(String zip) {
-        this.zip = zip;
-    }
-
-    public String getTelefono1() {
-        return telefono1;
-    }
-
-    public void setTelefono1(String telefono1) {
-        this.telefono1 = telefono1;
-    }
-
-    public String getTelefono2() {
-        return telefono2;
-    }
-
-    public void setTelefono2(String telefono2) {
-        this.telefono2 = telefono2;
-    }
-
-    public Utente getUtenteIdutente() {
-        return utenteIdutente;
-    }
-
-    public void setUtenteIdutente(Utente utenteIdutente) {
-        this.utenteIdutente = utenteIdutente;
-    }
+    private Utente utente;
 
 }

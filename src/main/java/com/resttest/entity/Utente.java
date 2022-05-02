@@ -1,12 +1,20 @@
 package com.resttest.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "utente")
+@Getter
+@Setter
 public class Utente {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idutente", nullable = false)
@@ -24,77 +32,13 @@ public class Utente {
     @Column(name = "password", length = 200)
     private String password;
 
-    @OneToMany(mappedBy = "utenteIdutente")
-    private Set<Documento> documenti = new LinkedHashSet<>();
+    @OneToMany(mappedBy = "utente")
+    private List<Documento> documenti = new ArrayList<>();
 
-    @OneToMany(mappedBy = "utenteIdutente")
-    private Set<Recapito> recapiti = new LinkedHashSet<>();
+    @OneToMany(mappedBy = "utente")
+    private List<Recapito> recapiti = new ArrayList<>();
 
-    @OneToMany(mappedBy = "utenteIdutente")
-    private Set<Carrello> prodottiCarrello = new LinkedHashSet<>();
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCognome() {
-        return cognome;
-    }
-
-    public void setCognome(String cognome) {
-        this.cognome = cognome;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Set<Documento> getDocumenti() {
-        return documenti;
-    }
-
-    public void setDocumenti(Set<Documento> documenti) {
-        this.documenti = documenti;
-    }
-
-    public Set<Recapito> getRecapiti() {
-        return recapiti;
-    }
-
-    public void setRecapiti(Set<Recapito> recapiti) {
-        this.recapiti = recapiti;
-    }
-
-    public Set<Carrello> getProdottiCarrello() {
-        return prodottiCarrello;
-    }
-
-    public void setProdottiCarrello(Set<Carrello> prodottiCarrello) {
-        this.prodottiCarrello = prodottiCarrello;
-    }
+    @OneToMany(mappedBy = "utente")
+    private List<Carrello> prodottiCarrello = new ArrayList<>();
 
 }

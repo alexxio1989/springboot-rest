@@ -1,56 +1,30 @@
 package com.resttest.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "carrello")
+@Getter
+@Setter
 public class Carrello {
+
     @EmbeddedId
     private CarrelloId id;
 
-    @MapsId("utenteIdutente")
+    @MapsId("idutente")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "utente_idutente", nullable = false)
-    private Utente utenteIdutente;
+    private Utente utente;
 
-    @MapsId("prodottoIdprodotto")
+    @MapsId("idprodotto")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "prodotto_idprodotto", nullable = false)
-    private Prodotto prodottoIdprodotto;
+    private Prodotto prodotto;
 
     @Column(name = "qnt")
     private Integer qnt;
-
-    public CarrelloId getId() {
-        return id;
-    }
-
-    public void setId(CarrelloId id) {
-        this.id = id;
-    }
-
-    public Utente getUtenteIdutente() {
-        return utenteIdutente;
-    }
-
-    public void setUtenteIdutente(Utente utenteIdutente) {
-        this.utenteIdutente = utenteIdutente;
-    }
-
-    public Prodotto getProdottoIdprodotto() {
-        return prodottoIdprodotto;
-    }
-
-    public void setProdottoIdprodotto(Prodotto prodottoIdprodotto) {
-        this.prodottoIdprodotto = prodottoIdprodotto;
-    }
-
-    public Integer getQnt() {
-        return qnt;
-    }
-
-    public void setQnt(Integer qnt) {
-        this.qnt = qnt;
-    }
 
 }
